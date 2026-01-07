@@ -1,2 +1,29 @@
-# AmazonWebScraping
-A Python web scraper using Selenium &amp; BeautifulSoup to extract laptop data (title, price, link) from Amazon India. It navigates through pages automatically and saves the results in an Excel file with clickable links—ideal for price tracking and product research.
+# Amazon Web Scraping (Educational Project)
+
+This project demonstrates how `Selenium` and `BeautifulSoup` can be used
+to scrape publicly visible product information from Amazon India.
+
+## Features
+- Automated Amazon search using `Selenium`
+- `HTML` parsing with BeautifulSoup
+- Export results to Excel with clickable product links
+
+## Requirements
+- `Python 3.8+`
+- Google Chrome
+- ChromeDriver (matching your Chrome version)
+
+## Setup
+1. Install dependencies:
+   ```
+   python -m pip install -r requirements.txt
+   ```
+2. Download ChromeDriver and add it to `PATH`
+3. Run:
+   ```
+   python main.py
+   ```
+
+## Notes
+- Amazon may block automated requests
+- Use for educational purposes only
