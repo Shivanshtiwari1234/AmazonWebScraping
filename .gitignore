@@ -1,5 +1,5 @@
 chromedriver.exe
 __pycache__/
-*.xlsx
 .env
 .flake8
+products.*

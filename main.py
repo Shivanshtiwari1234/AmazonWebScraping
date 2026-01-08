@@ -1,30 +1,26 @@
-"""
-Main entry point for the Amazon Web Scraping project.
-
-This script performs:
-1. Amazon product search
-2. HTML parsing
-3. Exporting results to an Excel file
-
-Run using:
-    python main.py
-"""
-
 from amazon_scraper.search import search_amazon
-from amazon_scraper.exporter import save_to_excel
-from amazon_scraper.config import DEFAULT_QUERY
+from amazon_scraper.parser import parse_products
+from amazon_scraper.exporter import save_to_csv, save_to_excel
 
 
 def main():
-    # Step 1: Perform product search
-    products = search_amazon(DEFAULT_QUERY)
+    # 1️⃣ Search Amazon for a query
+    query = "laptop"
+    print(f"Searching Amazon for: {query}")
+    html = search_amazon(query)
 
-    # Step 2: Export results
-    if products:
-        save_to_excel(products)
-        print(f"Saved {len(products)} products to Excel.")
-    else:
-        print("No products found.")
+    # 2️⃣ Parse HTML to extract products
+    products = parse_products(html)
+    print(f"Products found: {len(products)}")
+
+    if not products:
+        print("No products found. Exiting.")
+        return
+
+    # 3️⃣ Export results
+    save_to_csv(products, filename="products.csv")
+    save_to_excel(products, filename="products.xlsx")
+    print("Export complete.")
 
 
 if __name__ == "__main__":
